@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.6'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'org.graalvm.buildtools.native' version '0.9.18'
+}
+
+group = 'pl.edu.wat'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.graalvm.js:js-scriptengine:22.0.0'
+    implementation 'org.graalvm.js:js:22.0.0'
+    implementation 'org.graalvm.compiler:compiler:22.0.0'
+    implementation 'org.graalvm.sdk:graal-sdk:22.0.0'
+    implementation 'org.graalvm.truffle:truffle-api:22.0.0'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.7.6'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.7.6'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.6'
+    compileOnly 'org.projectlombok:lombok'
+    implementation 'net.bytebuddy:byte-buddy:1.12.17'
+    implementation 'net.bytebuddy:byte-buddy-agent:1.12.17'
+    //developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.6'
+    testImplementation 'io.projectreactor:reactor-test:2.7.6'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
